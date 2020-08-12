@@ -1,0 +1,19 @@
+language: minimal
+services: docker
+arch:
+        - amd64
+        - arm64
+os: linux
+dist: bionic
+branches:
+        only:
+        - master
+#Doing this via envs may seem weird, but it makes maintenance and workarounds easier and avoids code duplication
+env:
+        - PACKAGE=dev-util/cargo-lock
+        - PACKAGE=games-util/multimc5
+        - PACKAGE=media-sound/ncspot
+        - PACKAGE=media-sound/spotifyd
+        - PACKAGE=media-sound/spotify-tui
+        - PACKAGE=sys-kernel/kmon
+script: .travis/run.sh

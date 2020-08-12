@@ -1,0 +1,6 @@
+dist: bionic
+language: minimal
+addons:
+        apt:
+                packages: shellcheck
+script: shellcheck src/.travis/run.sh
