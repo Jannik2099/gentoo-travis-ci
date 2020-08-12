@@ -1,4 +1,4 @@
-![GitHub](https://img.shields.io/github/license/Jannik2099/gentoo-travis-ci) ![Travis (.com)](https://img.shields.io/travis/com/Jannik2099/gentoo-travis-ci)
+![GitHub](https://img.shields.io/github/license/Jannik2099/gentoo-travis-ci?logo=gnu) ![Travis (.com)](https://img.shields.io/travis/com/Jannik2099/gentoo-travis-ci?logo=travis)
 
 # gentoo-travis-ci
 This project is a travis CI for gentoo overlays. It runs a FEATURES=test emerge on all modified ebuilds in a push / pull request.
