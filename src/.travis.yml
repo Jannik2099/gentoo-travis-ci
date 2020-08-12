@@ -8,12 +8,9 @@ dist: bionic
 branches:
         only:
         - master
+#Register the packages you want to track here, in the form ${CATEGORY}/${PN}
 #Doing this via envs may seem weird, but it makes maintenance and workarounds easier and avoids code duplication
 env:
-        - PACKAGE=dev-util/cargo-lock
-        - PACKAGE=games-util/multimc5
-        - PACKAGE=media-sound/ncspot
-        - PACKAGE=media-sound/spotifyd
-        - PACKAGE=media-sound/spotify-tui
-        - PACKAGE=sys-kernel/kmon
+        - PACKAGE=foo/bar
+        - PACKAGE=foo/bar-bin
 script: .travis/run.sh
