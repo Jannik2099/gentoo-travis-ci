@@ -30,7 +30,7 @@ case ${TRAVIS_CPU_ARCH} in
 		;;
 esac
 
-FILES=$(git --no-pager diff --name-only --diff-filter=ACM "${TRAVIS_BRANCH}"...HEAD | grep -e "${PACKAGE}.*\.ebuild")
+FILES=$(git --no-pager diff --name-only --diff-filter=ACMR "${TRAVIS_BRANCH}"...HEAD | grep -e "${PACKAGE}.*\.ebuild")
 if [ "${FILES}" = "" ]; then
 	echo "SUCCESS: ${PACKAGE} not modified"
 	exit 0
