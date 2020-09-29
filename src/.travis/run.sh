@@ -44,7 +44,12 @@ function iskeyword(){
 	fi
 }
 
-REPONAME=$(basename "$(readlink -f .)")
+if ! test -f profiles/repo_name; then
+	REPONAME=$(grep -e "^repo-name = .*" metadata/layout.conf | cut -d ' ' -f 3)
+else
+	REPONAME=$(cat profiles/repo_name)
+fi
+
 mkdir -p .tmpfiles/distfiles
 tar cf .travis/overlay.tar .
 wget -O - https://github.com/gentoo/gentoo/archive/master.tar.gz | tar xfz - -C .travis/
