@@ -47,6 +47,7 @@ function iskeyword(){
 REPONAME=$(basename "$(readlink -f .)")
 mkdir -p .tmpfiles/distfiles
 tar cf .travis/overlay.tar .
+wget -O - https://github.com/gentoo/gentoo/archive/master.tar.gz | tar xfz - -C .travis/
 echo \
 "[${REPONAME}]
 location = /var/db/repos/${REPONAME}
