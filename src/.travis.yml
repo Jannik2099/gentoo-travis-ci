@@ -8,8 +8,6 @@ dist: focal
 branches:
         only:
         - master
-jobs:
-    include:
-        - stage: "Build"
-        - script: .travis/run.sh --package foo/bar
-        - script: .travis/run.sh --package foo/bar-bin --notests
+
+script: .travis/run.sh --package foo/bar
+script: .travis/run.sh --package foo/bar-bin --notests
