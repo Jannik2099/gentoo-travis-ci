@@ -8,6 +8,9 @@ dist: focal
 branches:
         only:
         - master
-
-script: .travis/run.sh --package foo/bar
-script: .travis/run.sh --package foo/bar-bin --notests
+#Register the packages you want to track here, in the form ${CATEGORY}/${PN}
+#Doing this via envs may seem weird, but it makes maintenance and workarounds easier and avoids code duplication
+env:
+        - PACKAGE=foo/bar
+        - PACKAGE=foo/bar-bin
+script: .travis/run.sh
