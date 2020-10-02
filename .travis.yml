@@ -1,4 +1,6 @@
-dist: bionic
+arch: arm64
+os: linux
+dist: focal
 language: minimal
 addons:
         apt:
