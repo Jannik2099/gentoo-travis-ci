@@ -1,7 +1,32 @@
 #!/bin/bash
+options=$(getopt -o '' --long package:,notests -- "${@}")
+eval set -- "${options}"
+
+TESTS="test"
+while true; do
+	case "${1}" in
+		--package)
+			shift
+			PACKAGE="${1}"
+			;;
+		--notests)
+			TESTS="-test"
+			;;
+		--)
+			shift
+			break
+			;;
+	esac
+	shift
+done
+
 if ! test -d "${PACKAGE}"; then
 	echo "WARNING: ${PACKAGE} not found in repository"
 	exit 0
+fi
+
+if [ "${TESTS}" = "-test" ]; then
+	echo "INFO: skipping tests for ${PACKAGE}"
 fi
 
 case ${TRAVIS_CPU_ARCH} in
@@ -75,7 +100,7 @@ for ebuild in ${FILES}; do
 	if iskeyword "${ebuild}" "${ARCH1}"; then
 		if docker run --mount type=bind,src="${distpath}",dst=/var/cache/distfiles \
 		--rm --name "${name}" dev \
-		/bin/bash -c "emerge -ou ${atom} && export FEATURES=test && emerge -f ${atom} && emerge --quiet n ${atom}"; then
+		/bin/bash -c "emerge -ou ${atom} && export FEATURES=${TESTS} && emerge -f ${atom} && emerge --quiet n ${atom}"; then
 			echo "INFO: ${atom} passed"
 		else
 			echo "ERROR: ${atom} failed"
